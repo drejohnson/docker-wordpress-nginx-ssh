@@ -18,15 +18,15 @@ A Dockerfile that installs the latest wordpress, nginx, php-apc and php-fpm, and
 The easiest way get up and running with this docker container is to pull the latest stable version from the [Docker Hub Registry](https://registry.hub.docker.com/u/tlongren/docker-wordpress-nginx-ssh/):
 
 ```bash
-$ docker pull tlongren/docker-wordpress-nginx-ssh:latest
+$ docker pull tpi/docker-wordpress-nginx-ssh:latest
 ```
 
 If you'd like to build the image yourself:
 
 ```bash
-$ git clone https://github.com/tlongren/docker-wordpress-nginx-ssh.git
+$ git clone https://github.com/drejohnson/docker-wordpress-nginx-ssh.git
 $ cd docker-wordpress-nginx-ssh
-$ sudo docker build -t="tlongren/docker-wordpress-nginx-ssh"
+$ sudo docker build -t "tpi/docker-wordpress-nginx-ssh"
 ```
 
 ## Usage
@@ -34,13 +34,13 @@ $ sudo docker build -t="tlongren/docker-wordpress-nginx-ssh"
 The -p 80:80 maps the internal docker port 80 to the outside port 80 of the host machine. The other -p sets up sshd on port 2222.
 
 ```bash
-$ sudo docker run -p 80:80 -p 2222:22 --name docker-name -d tlongren/docker-wordpress-nginx-ssh:latest
+$ sudo docker run -p 80:80 -p 2222:22 --name <container-name> -d tpi/docker-wordpress-nginx-ssh:latest
 ```
 
-Start your newly created container, named *docker-name*.
+Start your newly created container, named *container-name*.
 
 ```
-$ sudo docker start docker-name
+$ sudo docker start <container-name>
 ```
 
 After starting the container docker-wordpress-nginx-ssh checks to see if it has started and the port mapping is correct.  This will also report the port mapping between the docker container and the host machine.
@@ -69,5 +69,5 @@ Now that you've got SSH access, you can setup your FTP client the same way, or t
 You can view logs like this:
 
 ```
-$ sudo docker logs docker-name
+$ sudo docker logs <container-name>
 ```
